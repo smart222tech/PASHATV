@@ -70,6 +70,10 @@ Review weekly:
 
 Do not judge SEO in the first few days. Record a baseline and compare over several weeks.
 
-## Current limitation
+## Publishing status and indexing
 
-The repository may not be public yet. Do not share the GitHub Pages URLs until the repository visibility and Pages publishing source are configured and the live pages are verified. Replace the example links if the final Pages URL differs.
+The repository is public and the GitHub Pages deployment workflow has successfully completed its deploy step. The current site URL is https://smart222tech.github.io/PASHATV/. Check the latest workflow at https://github.com/smart222tech/PASHATV/actions before assuming a new commit is live.
+
+The repository includes `robots.txt`, a six-URL `sitemap.xml`, multilingual landing pages, and a detailed Google TV setup checklist in English, German and Russian. The remaining account-owner task is to verify the URL-prefix property in Google Search Console and submit `sitemap.xml`; see `marketing/search-indexing-checklist.md`.
+
+Submitting a sitemap or requesting indexing does not guarantee inclusion or ranking.
