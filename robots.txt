@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://smart222tech.github.io/PASHATV/sitemap.xml
