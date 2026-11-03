@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="ru" class="dark">
+<html lang="de" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,13 +129,13 @@
                     <span class="hidden sm:inline">Telegram</span> PASHA TV
                 </a>
 
-                <!-- Language Switcher -->
-                <div class="flex bg-white/5 p-1 rounded-xl border border-white/10 text-xs font-bold">
-                    <button id="lang-ru-btn" onclick="setLanguage('ru')" class="px-3 py-1.5 rounded-lg transition-all bg-brand-red text-white shadow-sm">
-                        RU
+                <!-- Große, gut sichtbare Sprachwahl -->
+                <div class="language-switcher flex items-center gap-2 p-1.5 rounded-2xl border border-white/15 bg-black/40 shadow-lg" role="group" aria-label="Sprache auswählen">
+                    <button id="lang-de-btn" type="button" aria-pressed="true" class="language-button language-active flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-base sm:text-lg font-extrabold tracking-wide transition-all">
+                        <span class="text-2xl" aria-hidden="true">🇩🇪</span><span>DEUTSCH</span>
                     </button>
-                    <button id="lang-de-btn" onclick="setLanguage('de')" class="px-3 py-1.5 rounded-lg transition-all text-gray-400 hover:text-white">
-                        DE
+                    <button id="lang-ru-btn" type="button" aria-pressed="false" class="language-button flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-base sm:text-lg font-extrabold tracking-wide transition-all">
+                        <span class="text-2xl" aria-hidden="true">🇷🇺</span><span>РУССКИЙ</span>
                     </button>
                 </div>
             </div>
@@ -422,6 +422,16 @@
 
     <style>
         html[data-language="de"] [data-lang="ru"], html[data-language="ru"] [data-lang="de"] { display: none !important; }
+        .language-switcher { flex-shrink: 0; }
+        .language-button { min-width: 132px; color: #cbd5e1; border: 2px solid transparent; background: rgba(255,255,255,.06); }
+        .language-button:hover { color: #fff; background: rgba(255,255,255,.12); }
+        .language-button.language-active { color: #fff; background: linear-gradient(135deg,#dc2626,#991b1b); border-color: rgba(255,255,255,.28); box-shadow: 0 0 20px rgba(229,9,20,.35); transform: translateY(-1px); }
+        .language-button.language-inactive { opacity: .82; }
+        .language-button:focus-visible { outline: 3px solid #c4b5fd; outline-offset: 3px; }
+        @media (max-width: 520px) {
+            .language-switcher { width: 100%; }
+            .language-button { flex: 1; min-width: 0; padding-left: .65rem; padding-right: .65rem; font-size: .9rem; }
+        }
         .search-hidden { display: none !important; }
         #searchEmpty { display: none; }
         #searchEmpty.is-visible { display: block; }
@@ -436,7 +446,7 @@
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toast-message');
         const emptyState = document.getElementById('searchEmpty');
-        let currentLanguage = 'ru';
+        let currentLanguage = 'de';
         let toastTimer;
 
         function setLanguage(language) {
@@ -451,12 +461,12 @@
             const ruButton = document.getElementById('lang-ru-btn');
             const deButton = document.getElementById('lang-de-btn');
             if (ruButton && deButton) {
-                ruButton.classList.toggle('bg-brand-red', currentLanguage === 'ru');
-                ruButton.classList.toggle('text-white', currentLanguage === 'ru');
-                ruButton.classList.toggle('text-gray-400', currentLanguage !== 'ru');
-                deButton.classList.toggle('bg-brand-red', currentLanguage === 'de');
-                deButton.classList.toggle('text-white', currentLanguage === 'de');
-                deButton.classList.toggle('text-gray-400', currentLanguage !== 'de');
+                ruButton.classList.toggle('language-active', currentLanguage === 'ru');
+                ruButton.classList.toggle('language-inactive', currentLanguage !== 'ru');
+                deButton.classList.toggle('language-active', currentLanguage === 'de');
+                deButton.classList.toggle('language-inactive', currentLanguage !== 'de');
+                ruButton.setAttribute('aria-pressed', String(currentLanguage === 'ru'));
+                deButton.setAttribute('aria-pressed', String(currentLanguage === 'de'));
             }
 
             if (searchInput) {
@@ -554,15 +564,9 @@
         document.getElementById('lang-ru-btn')?.addEventListener('click', () => setLanguage('ru'));
         document.getElementById('lang-de-btn')?.addEventListener('click', () => setLanguage('de'));
 
-        let savedLanguage = 'ru';
-        try { savedLanguage = localStorage.getItem('pasha-lang') || 'ru'; } catch (error) {}
-        const originalSetLanguage = setLanguage;
-        setLanguage = (language) => {
-            originalSetLanguage(language);
-            try { localStorage.setItem('pasha-lang', currentLanguage); } catch (error) {}
-        };
-        window.setLanguage = setLanguage;
-        setLanguage(savedLanguage);
+        // Die Seite startet bei jedem neuen Aufruf standardmäßig auf Deutsch.
+        // Ein Wechsel zu Russisch gilt für die aktuelle Sitzung.
+        setLanguage('de');
     })();
     </script>
 </body>
