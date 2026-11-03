@@ -1,54 +1,321 @@
-<!doctype html>
-<html lang="de">
+```html
+<!DOCTYPE html>
+<html lang="ru" class="dark">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PASHA TV – Streaming, YouTube & Videotheken</title>
-<meta name="description" content="PASHA TV – zweisprachige Anleitungen zu Downloader, YouTube-Apps, Videotheken und Fire-TV-Einstellungen.">
-<meta name="theme-color" content="#09111f">
-<style>
-:root{color-scheme:dark;--bg:#09111f;--panel:#121f31;--panel2:#182a40;--line:#2b4059;--txt:#f4f7fb;--muted:#b8c5d8;--green:#65e4b5;--yellow:#ffd27b}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 12% 0%,#1d3a58 0,transparent 36%),var(--bg);color:var(--txt);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}.wrap{width:min(1080px,calc(100% - 30px));margin:auto}
-header{position:sticky;top:0;z-index:5;background:#09111fee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}.logo{font-weight:950;letter-spacing:.15em;color:var(--txt);text-decoration:none}.logo span{color:var(--green)}.lang{display:flex;gap:6px}.lang button,.nav a{border:1px solid var(--line);background:var(--panel);color:var(--txt);border-radius:999px;padding:8px 12px;font-weight:800;text-decoration:none;cursor:pointer}.lang button.active{background:var(--green);color:#05251b;border-color:var(--green)}
-.hero{padding:55px 0 28px}.eyebrow{color:var(--green);font-size:.78rem;font-weight:900;letter-spacing:.18em}.hero h1{font-size:clamp(2.2rem,7vw,4.3rem);line-height:1.04;margin:12px 0}.lead{max-width:800px;color:var(--muted);font-size:1.1rem}.actions,.nav{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--green);color:#05251b;text-decoration:none;padding:11px 16px;border-radius:11px;font-weight:900;border:1px solid var(--green)}.btn.alt{background:var(--panel2);color:var(--txt);border-color:var(--line)}.nav{margin:15px 0 24px}.nav a{font-size:.9rem}
-section{scroll-margin-top:85px;margin:18px 0 24px;padding:clamp(17px,3vw,28px);border:1px solid var(--line);border-radius:19px;background:linear-gradient(145deg,var(--panel),#0e1928)}h2{font-size:1.55rem;line-height:1.25;margin:0 0 17px}h3{font-size:1.15rem;margin:7px 0 8px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px}.card{padding:18px;border-radius:15px;border:1px solid var(--line);background:var(--panel2)}.card p{color:var(--muted);margin:8px 0}.icon{font-size:1.7rem}.pill{display:inline-block;background:#3a321f;color:var(--yellow);font-size:.75rem;font-weight:850;padding:3px 9px;border-radius:99px;margin:2px 3px 5px 0}.code{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0;padding:12px 14px;background:#081321;border:1px dashed #56718d;border-radius:12px}.code strong{font-size:1.45rem;letter-spacing:.12em;color:var(--green)}.copy{background:var(--green);border:0;border-radius:8px;padding:8px 11px;color:#05251b;font-weight:900;cursor:pointer}.steps{counter-reset:step;list-style:none;padding:0;margin:0}.steps li{counter-increment:step;position:relative;padding:0 0 15px 43px;color:var(--muted)}.steps li:before{content:counter(step);position:absolute;left:0;top:0;width:29px;height:29px;display:grid;place-items:center;border-radius:50%;background:var(--green);color:#05251b;font-weight:950}.note{border-left:3px solid var(--yellow);background:#3a301c55;padding:13px 15px;border-radius:9px;margin-top:14px;color:#f4e5c7}.muted{color:var(--muted)}.linkgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:11px}.linkbox{display:block;padding:15px;border:1px solid var(--line);border-radius:13px;background:var(--panel2);text-decoration:none;color:var(--txt);font-weight:850}.linkbox small{display:block;color:var(--muted);font-weight:500;margin-top:4px}.video{background:linear-gradient(110deg,#263e5c,#15283e);border-color:#48627d}footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:.9rem}
-[data-lang]{display:none}body.de [data-lang="de"],body.ru [data-lang="ru"]{display:block}body.de span[data-lang="de"],body.ru span[data-lang="ru"]{display:inline}
-@media(max-width:600px){.hero{padding-top:37px}.head{align-items:center}.nav a{font-size:.82rem;padding:7px 10px}.code strong{font-size:1.25rem}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PASHA TV - Netflix, YouTube & Kino Setup Guide</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#E50914',
+                            purple: '#8B5CF6',
+                            blue: '#3B82F6',
+                            darkBg: '#0F0F13',
+                            glassCard: 'rgba(23, 23, 31, 0.75)',
+                            glassBorder: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    boxShadow: {
+                        glowRed: '0 0 25px -5px rgba(229, 9, 20, 0.5)',
+                        glowPurple: '0 0 25px -5px rgba(139, 92, 246, 0.5)',
+                        glowBlue: '0 0 25px -5px rgba(59, 130, 246, 0.5)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0B0E;
+            color: #F3F4F6;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(229, 9, 20, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .glass-panel {
+            background: rgba(20, 20, 28, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(28, 28, 38, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0B0E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27273A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3F3F5A;
+        }
+    </style>
 </head>
-<body class="de">
-<header><div class="wrap head"><a class="logo" href="../">PASHA <span>TV</span></a><div class="lang"><button id="deBtn" class="active">🇩🇪 DE</button><button id="ruBtn">🇷🇺 RU</button></div></div></header>
-<main class="wrap">
-<div class="hero">
-<div class="eyebrow">PASHA TV · ANLEITUNGEN & TIPPS</div>
-<div data-lang="de"><h1>Streaming, YouTube & Videotheken</h1><p class="lead">Eine übersichtliche Anleitung für Fire TV Stick, Android TV und TV-Boxen. Hier findest du die Apps aus meinem Beitrag, Hinweise zur Installation, wichtige Einstellungen und weiterführende Videos.</p></div>
-<div data-lang="ru"><h1>Стриминг, YouTube и видеотеки</h1><p class="lead">Понятная инструкция для Fire TV Stick, Android TV и ТВ-приставок. Здесь собраны приложения из моей публикации, пояснения по установке, важные настройки и дополнительные видео.</p></div>
-<div class="actions"><a class="btn" href="https://t.me/+CfXHboLZ61wyNTFi" target="_blank" rel="noopener">✈️ Telegram PASHA TV</a><a class="btn alt" href="https://vimeo.com/1103173341" target="_blank" rel="noopener">▶️ <span data-lang="de">Video-Anleitung ansehen</span><span data-lang="ru">Смотреть видеоинструкцию</span></a></div>
-</div>
-<nav class="nav">
-<a href="#downloader">Downloader</a><a href="#youtube">YouTube</a><a href="#videotheken"><span data-lang="de">Videotheken</span><span data-lang="ru">Видеотеки</span></a><a href="#firetv">Fire TV</a><a href="#links"><span data-lang="de">Videos & Links</span><span data-lang="ru">Видео и ссылки</span></a>
-</nav>
+<body class="min-h-screen font-sans flex flex-col antialiased selection:bg-brand-red selection:text-white">
 
-<section id="downloader">
-<h2>🟠 Downloader – <span data-lang="de">Was ist das und wie funktioniert es?</span><span data-lang="ru">что это и как им пользоваться?</span></h2>
-<div class="grid">
-<div class="card"><h3 data-lang="de">Was ist Downloader?</h3><h3 data-lang="ru">Что такое Downloader?</h3><p data-lang="de">Downloader ist eine orangefarbene App, mit der du auf kompatiblen TV-Geräten Internetadressen öffnen und Apps aus vertrauenswürdigen Quellen herunterladen kannst. Sie ist kein Streamingdienst, sondern ein Download-Werkzeug.</p><p data-lang="ru">Downloader — приложение с оранжевой иконкой. На совместимых ТВ-устройствах с его помощью можно открывать интернет-адреса и скачивать приложения из надёжных источников. Это инструмент для загрузки, а не видеосервис.</p></div>
-<div class="card"><h3 data-lang="de">Wo finde ich die App?</h3><h3 data-lang="ru">Где найти приложение?</h3><p data-lang="de"><b>Fire TV Stick:</b> Suche im Amazon Appstore nach „Downloader“ und installiere die App von AFTVnews.</p><p data-lang="ru"><b>Fire TV Stick:</b> найди в Amazon Appstore приложение «Downloader» и установи приложение от AFTVnews.</p><p data-lang="de"><b>Android TV / Google TV:</b> Suche im Google Play Store nach „Downloader“. Die Verfügbarkeit kann je nach Gerät variieren.</p><p data-lang="ru"><b>Android TV / Google TV:</b> найди «Downloader» в Google Play Store. Наличие приложения зависит от устройства.</p></div>
-</div>
-<h3 data-lang="de" style="margin-top:20px">So verwendest du Downloader</h3><h3 data-lang="ru" style="margin-top:20px">Как пользоваться Downloader</h3>
-<ol class="steps">
-<li><span data-lang="de">Öffne den App Store deines Geräts, suche nach Downloader und installiere die App.</span><span data-lang="ru">Открой магазин приложений устройства, найди Downloader и установи его.</span></li>
-<li><span data-lang="de">Starte Downloader. Beim ersten Öffnen können Berechtigungsabfragen erscheinen.</span><span data-lang="ru">Запусти Downloader. При первом открытии могут появиться запросы разрешений.</span></li>
-<li><span data-lang="de">Wenn du einen gültigen Downloader-Code für eine App hast, gib ihn im URL-/Code-Feld ein und bestätige.</span><span data-lang="ru">Если у тебя есть действующий Downloader-код приложения, введи его в поле URL/Code и подтверди.</span></li>
-<li><span data-lang="de">Prüfe vor dem Download die Quelle und den App-Namen. Installiere keine Datei, deren Herkunft du nicht kennst.</span><span data-lang="ru">Перед загрузкой проверь источник и название приложения. Не устанавливай файлы неизвестного происхождения.</span></li>
-<li><span data-lang="de">Nach dem Download öffnet sich je nach Gerät der Installationsdialog. Folge den Bildschirmanweisungen.</span><span data-lang="ru">После загрузки, в зависимости от устройства, откроется окно установки. Следуй инструкциям на экране.</span></li>
-</ol>
-<div class="note"><span data-lang="de"><b>Wichtig:</b> Ein Downloader-Code ist lediglich eine Kurzadresse zu einer Downloadquelle. Er ist keine Garantie für Sicherheit, Funktion oder Aktualität einer App.</span><span data-lang="ru"><b>Важно:</b> Downloader-код — это короткий адрес источника загрузки. Он не гарантирует безопасность, работоспособность или актуальность приложения.</span></div>
-</section>
+    <!-- Toast Notification for Copying Code -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-emerald-600 text-white px-5 py-3.5 rounded-2xl shadow-2xl font-medium">
+        <i class="fa-solid fa-circle-check text-xl"></i>
+        <span id="toast-message">Код успешно скопирован!</span>
+    </div>
 
-<section id="youtube">
-<h2>▶️ YouTube – <span data-lang="de">Alternativen aus meinem Beitrag</span><span data-lang="ru">альтернативы из моей публикации</span></h2>
-<div class="grid">
-<article class="card"><div class="icon">🔥</div><h3>YouTube-Client mit Original-Icon</h3><span class="pill">Stick · TV · Box</span><p data-lang="de">Im ursprünglichen Beitrag als alternative YouTube-App beschrieben: ähnliche Oberfläche wie das Original, Anmeldung und weitere bekannte Funktionen. Laut Beitrag kann sie parallel zur Original-App installiert sein.</p><p data-lang="ru">В исходной публикации описан как альтернативное приложение YouTube: интерфейс похож на оригинал, есть вход в аккаунт и привычные функции. Согласно публикации, приложение может быть установлено рядом с оригинальным YouTube.</p><div class="code"><div><small>Downloader-Code</small><br><strong>7938584</strong></div><button class="copy" data-copy="7938584">Kopieren</button></div></article>
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-white/10 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            
+            <!-- Logo & Title -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-red to-brand-purple flex items-center justify-center shadow-glowRed">
+                    <i class="fa-solid fa-tv text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
+                        PASHA<span class="text-brand-red">TV</span>
+                    </h1>
+                    <p class="text-xs text-gray-400 font-medium" data-ru="Инструкции и коды приложений" data-de="App-Anleitungen & Downloader Codes">
+                        Инструкции и коды приложений
+                    </p>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="flex-1 max-w-md mx-2 min-w-[200px]">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" id="searchInput" 
+                        placeholder="Поиск приложения или описания..." 
+                        data-placeholder-ru="Поиск приложения или описания..."
+                        data-placeholder-de="App oder Beschreibung suchen..."
+                        class="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2 text-sm text-gray-200 placeholder-gray-400 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all">
+                </div>
+            </div>
+
+            <!-- Action Controls: Telegram Button & Language Switcher -->
+            <div class="flex items-center gap-3">
+                <!-- Telegram Channel Button -->
+                <a href="https://t.me/+CfXHboLZ61wyNTFi" target="_blank" rel="noopener noreferrer" 
+                   class="flex items-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold px-4 py-2 rounded-xl text-sm transition-all shadow-glowBlue hover:scale-105 active:scale-95">
+                    <i class="fa-brands fa-telegram text-lg"></i>
+                    <span class="hidden sm:inline">Telegram</span> PASHA TV
+                </a>
+
+                <!-- Language Switcher -->
+                <div class="flex bg-white/5 p-1 rounded-xl border border-white/10 text-xs font-bold">
+                    <button id="lang-ru-btn" onclick="setLanguage('ru')" class="px-3 py-1.5 rounded-lg transition-all bg-brand-red text-white shadow-sm">
+                        RU
+                    </button>
+                    <button id="lang-de-btn" onclick="setLanguage('de')" class="px-3 py-1.5 rounded-lg transition-all text-gray-400 hover:text-white">
+                        DE
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+        <!-- Hero Welcome Banner -->
+        <section class="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-white/10">
+            <div class="absolute -right-16 -top-16 w-64 h-64 bg-brand-red/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-3xl">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-red/20 border border-brand-red/30 text-brand-red text-xs font-bold uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-bolt"></i> Smart TV & Fire Stick Setup
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight mb-3" 
+                    data-ru="Установка Видеотек, YouTube без рекламы и Фильмов" 
+                    data-de="Installation von Videotheken, YouTube ohne Werbung & Filme">
+                    Установка Видеотек, YouTube без рекламы и Фильмов
+                </h2>
+                <p class="text-gray-300 text-sm sm:text-base leading-relaxed"
+                   data-ru="Полное пошаговое руководство по скачиванию и настройке бесплатных приложений для Fire Stick и Google TV через оранжевый Downloader. Выберите необходимое приложение ниже, скопируйте код и введите в программу."
+                   data-de="Vollständige Schritt-für-Schritt-Anleitung zum Herunterladen und Einrichten kostenloser Apps für Fire Stick und Google TV über die orangefarbene Downloader-App. Wählen Sie die gewünschte App unten aus, kopieren Sie den Code und geben Sie ihn ein.">
+                    Полное пошаговое руководство по скачиванию и настройке бесплатных приложений для Fire Stick и Google TV через оранжевый Downloader. Выберите необходимое приложение ниже, скопируйте код и введите в программу.
+                </p>
+            </div>
+        </section>
+
+        <!-- IMPORTANT STEP-BY-STEP INSTRUCTIONS (2 Columns) -->
+        <section class="grid md:grid-cols-2 gap-6">
+            
+            <!-- Step 1: Downloader App -->
+            <div class="glass-card rounded-2xl p-6 relative flex flex-col justify-between border-l-4 border-amber-500">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-500 flex items-center justify-center font-bold text-lg border border-amber-500/30">
+                                1
+                            </div>
+                            <h3 class="font-bold text-lg text-white" 
+                                data-ru="Как устанавливать через Downloader" 
+                                data-de="Anleitung: Downloader-App nutzen">
+                                Как устанавливать через Downloader
+                            </h3>
+                        </div>
+                        <i class="fa-solid fa-download text-2xl text-amber-500/50"></i>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-chevron-right text-amber-500 mt-0.5 shrink-0"></i>
+                            <span data-ru="Скачайте оранжевую программу <b>Downloader</b> в App Store (на Amazon Fire Stick) или в Google Play Store (на Google TV)."
+                                  data-de="Laden Sie die orangefarbene App <b>Downloader</b> im App Store (Fire Stick) oder Google Play Store (Google TV) herunter.">
+                                Скачайте оранжевую программу <b>Downloader</b> в App Store (на Amazon Fire Stick) или в Google Play Store (на Google TV).
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-chevron-right text-amber-500 mt-0.5 shrink-0"></i>
+                            <span data-ru="Откройте <b>Downloader</b>, найдите строку ввода адреса/кода."
+                                  data-de="Öffnen Sie <b>Downloader</b> und suchen Sie die Einstellungs- bzw. Adresszeile.">
+                                Откройте <b>Downloader</b>, найдите строку ввода адреса/кода.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-chevron-right text-amber-500 mt-0.5 shrink-0"></i>
+                            <span data-ru="Введите <b>6-значный или 7-значный код</b> из карточек ниже и нажмите <b>Go</b> для установки."
+                                  data-de="Geben Sie den <b>6- oder 7-stelligen Code</b> aus den unten stehenden Karten ein und drücken Sie <b>Go</b> zum Installieren.">
+                                Введите <b>6-значный или 7-значный код</b> из карточек ниже и нажмите <b>Go</b> для установки.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-amber-400 font-semibold">
+                    <span data-ru="Приложение: Downloader (Orange App)" data-de="App: Downloader (Orange App)">Приложение: Downloader (Orange App)</span>
+                    <i class="fa-solid fa-square-arrow-up-right"></i>
+                </div>
+            </div>
+
+            <!-- Step 2: Unbekannte Apps / Unknown Apps Permissions (CRITICAL) -->
+            <div class="glass-card rounded-2xl p-6 relative flex flex-col justify-between border-l-4 border-red-500 bg-red-950/10">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-red-500/20 text-red-500 flex items-center justify-center font-bold text-lg border border-red-500/30">
+                                2
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-wider font-extrabold text-red-500 block"
+                                      data-ru="КРАЙНЕ ВАЖНО" data-de="SEHR WICHTIG">КРАЙНЕ ВАЖНО</span>
+                                <h3 class="font-bold text-lg text-white" 
+                                    data-ru="Разрешения & Обновления" 
+                                    data-de="Berechtigungen & Updates">
+                                    Разрешения & Обновления
+                                </h3>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-triangle-exclamation text-2xl text-red-500/80 animate-pulse"></i>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-shield-halved text-red-400 mt-0.5 shrink-0"></i>
+                            <span data-ru="<b>Разрешите установку:</b> Перейдите в <i>Einstellungen (Настройки) -> Mein Fire TV / System -> Entwickleroptionen (Опции разработчика) -> Unbekannte Apps installieren</i>."
+                                  data-de="<b>Installation erlauben:</b> Gehen Sie zu <i>Einstellungen -> Mein Fire TV / System -> Entwickleroptionen -> Unbekannte Apps installieren</i>.">
+                                <b>Разрешите установку:</b> Перейдите в <i>Einstellungen (Настройки) -> Mein Fire TV / System -> Entwickleroptionen (Опции разработчика) -> Unbekannte Apps installieren</i>.
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-toggle-on text-red-400 mt-0.5 shrink-0"></i>
+                            <span data-ru="Включите значение <b>AN / ВКЛ</b> напротив установленного приложения (например: Zona, YouTube и др.)."
+                                  data-de="Schalten Sie die Option bei der installierten App (z.B. Zona, YouTube usw.) auf <b>AN / EIN</b>.">
+                                Включите значение <b>AN / ВКЛ</b> напротив установленного приложения (например: Zona, YouTube и др.).
+                            </span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-rotate text-red-400 mt-0.5 shrink-0"></i>
+                            <span data-ru="<b>ОБЯЗАТЕЛЬНО:</b> При первом запуске приложений разрешайте <b>ОБНОВЛЕНИЕ</b>! Без обновления приложения перестанут работать."
+                                  data-de="<b>WICHTIG:</b> Erlauben Sie beim ersten Start unbedingt <b>UPDATES</b>! Ohne Update funktionieren die Apps nicht mehr.">
+                                <b>ОБЯЗАТЕЛЬНО:</b> При первом запуске приложений разрешайте <b>ОБНОВЛЕНИЕ</b>! Без обновления приложения перестанут работать.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-4 pt-3 border-t border-red-500/20 text-xs text-red-400 font-semibold flex items-center justify-between">
+                    <span data-ru="Включите Unbekannte Apps в настройках TV!" data-de="Unbekannte Apps in TV-Einstellungen aktivieren!">Включите Unbekannte Apps в настройках TV!</span>
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 1: DE & EN KINO & SERIES -->
+        <section class="space-y-6 app-section">
+            <div class="flex items-center gap-3 border-b border-white/10 pb-3">
+                <div class="p-2 rounded-lg bg-purple-600/20 text-purple-400">
+                    <i class="fa-solid fa-film text-xl"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-white" 
+                        data-ru="1. Немецкие и Международные КИНО / СЕРИАЛЫ (DE & EN)" 
+                        data-de="1. Deutsche & Internationale FILME / SERIEN (DE & EN)">
+                        1. Немецкие и Международные КИНО / СЕРИАЛЫ (DE & EN)
+                    </h2>
+                    <p class="text-xs text-gray-400" data-ru="Приложения для просмотра фильмов и сериалов на немецком и английском языках" data-de="Apps zum Ansehen von Filmen und Serien auf Deutsch und Englisch">
+                        Приложения для просмотра фильмов и сериалов на немецком и английском языках
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- STUBE BOX 2 -->
+                <div class="glass-card rounded-2xl p-6 flex flex-col justify-between space-y-4 app-item">
+                    <div>
+                        <div class="flex items-start justify-between">
+                            <h3 class="font-bold text-xl text-white flex items-center gap-2">
+                                <i class="fa-solid fa-box-open text-purple-400"></i> STUBE BOX 2
+                            </h3>
+                            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                                DE / EN
+                            </span>
+                        </div>
+                        <p class="text-gray-300 text-sm mt-2 leading-relaxed"
+                           data-ru="Популярное приложение для просмотра фильмов и сериалов. После запуска выберите внутри меню: MediaBox -> Xstream -> Filmpalast и другие каналы."
+                           data-de="Beliebte App für Filme und Serien. Wählen Sie nach dem Start im Menü: MediaBox -> Xstream -> Filmpalast und weitere Kanäle.">
+                            Популярное приложение для просмотра фильмов и сериалов. После запуска выберите внутри меню: MediaBox -> Xstream -> Filmpalast и другие каналы.
+                        </p>
+                    </div>
+
+                    <div class="pt-2">
+                        <div class="bg-black/40 p-3 rounded-xl border border-white/10 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase font-bold tracking-wider block" data-ru="Код Downloader" data-de="Downloader Code">Код Downloader</span>
+                                <span class="font-mono text-xl font-bold text-amber-400">206273</span>
+                            </div>
+                            <button onclick="copyToClipboard('206273')" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 active:scale-95 text-white rounded-lg text-sm font-semibold transition-all flex items-center gap-2 shadow-glowPurple"ыть установлено рядом с оригинальным YouTube.</p><div class="code"><div><small>Downloader-Code</small><br><strong>7938584</strong></div><button class="copy" data-copy="7938584">Kopieren</button></div></article>
 <article class="card"><div class="icon">📺</div><h3>TizenTube</h3><span class="pill">Stick · TV · Box</span><p data-lang="de">Eine weitere YouTube-Alternative, die im Beitrag mit einer Menüführung im Stil der Original-App beschrieben wird.</p><p data-lang="ru">Ещё одна альтернатива YouTube. В публикации отмечено меню в стиле оригинального приложения.</p><div class="code"><div><small>Downloader-Code</small><br><strong>7229091</strong></div><button class="copy" data-copy="7229091">Kopieren</button></div></article>
 <article class="card"><div class="icon">🔁</div><h3 data-lang="de">Weitere YouTube-Alternative</h3><h3 data-lang="ru">Ещё одна альтернатива YouTube</h3><span class="pill">Stick · TV · Box</span><p data-lang="de">Als Ausweichmöglichkeit genannt, falls eine andere YouTube-Version auf dem Gerät nicht funktionieren sollte.</p><p data-lang="ru">Указана как запасной вариант на случай, если другая версия YouTube не работает на устройстве.</p><div class="code"><div><small>Downloader-Code</small><br><strong>6447639</strong></div><button class="copy" data-copy="6447639">Kopieren</button></div></article>
 </div>
